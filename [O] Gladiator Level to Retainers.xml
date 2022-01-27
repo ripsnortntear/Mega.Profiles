@@ -1396,19 +1396,6 @@ Updated: January 2022 by ripsnorttear
 			<MinLevel/>
 			<MaxLevel/>
 		</GrindArea>
-			<Hotspots>
-				<Hotspot Radius="30" XYZ="457.38, 303.0278, -264.6741"/>
-			</Hotspots>
-			<TargetMobs>
-				<TargetMob Id="2077" Weight="7000"/>
-				<TargetMob Id="2078" Weight="6000"/>
-				<TargetMob Id="2076" Weight="5000"/>
-				<TargetMob Id="2079" Weight="4000"/>
-				<TargetMob Id="2080" Weight="3000"/>
-				<TargetMob Id="1454" Weight="2000"/>
-				<TargetMob Id="656" Weight="1000"/>
-			</TargetMobs>
-		</GrindArea>
 	</GrindAreas>
 	<CodeChunks>
 		<CodeChunk Name="Voice_Of_The_Just">
@@ -1436,47 +1423,6 @@ Updated: January 2022 by ripsnorttear
 					}
 				}
 		]]>
-		</CodeChunk>
-			<![CDATA[
-				Logging.Write("Commencing duty.");
-				uint[] npcIds = { 1006416 };
-				var dutyNpc = GameObjectManager.GameObjects.Where(r => r.IsTargetable && npcIds.Contains(r.NpcId)).OrderBy(r => r.Distance()).FirstOrDefault();
-				while (Core.Me.Location.Distance2D(dutyNpc.Location) > 1.5f)
-				{
-					await Coroutine.Yield();
-					Navigator.PlayerMover.MoveTowards(dutyNpc.Location);
-				}
-				Navigator.PlayerMover.MoveStop();
-				dutyNpc.Interact();
-				await Coroutine.Wait(5000, () => Talk.DialogOpen || DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
-				while (!(DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen))
-				{
-					Talk.Next();
-					await Coroutine.Yield();
-				}
-				await Coroutine.Wait(5000, () => DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
-				if (DifficultySelectYesNo.IsOpen) { DifficultySelectYesNo.Proceed(2); }
-				else if (SelectYesno.IsOpen) { SelectYesno.Yes(); }
-				else
-				{
-				Logging.Write("Duty window didn't open.");
-				TreeRoot.Stop();
-				}
-				await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
-				await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
-				while (QuestLogManager.InCutscene)
-				{
-					ff14bot.RemoteAgents.AgentCutScene.Instance.PromptSkip();
-					if (ff14bot.RemoteAgents.AgentCutScene.Instance.CanSkip && SelectString.IsOpen) { SelectString.ClickSlot(0); }
-					if (Talk.DialogOpen) { Talk.Next(); }
-					await Coroutine.Yield();
-				}
-				await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
-				await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
-				await Coroutine.Wait(10000, () => !Core.Me.HasAura(1268));
-				Logging.Write("Duty commenced.");
-				await Coroutine.Sleep(1500);
-			]]>
 		</CodeChunk>
 	</CodeChunks>
 </Profile>

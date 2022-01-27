@@ -1029,9 +1029,9 @@ Updated: January 2022 by ripsnorttear
 		</If>
 		<If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 4">
 			<UserDialog QuestId="65781" StepId="4" DialogText="Please manually complete the dungeon: Lv. 15 Satasha."/>
-			<If condition="not DutyManager.InInstance">
+			<!-- <If condition="not DutyManager.InInstance">
 				<LLJoinDuty DutyId="4"/>
-			</If>
+			</If> -->
 			<WaitWhile Condition="not GetQuestStep(65781) == 255"/>
 		</If>
 		<If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 255">

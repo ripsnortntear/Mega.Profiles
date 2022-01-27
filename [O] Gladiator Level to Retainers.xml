@@ -2,7 +2,7 @@
 <!--
 Profile:  [OrderBot] Gladiator Level to Retainers
 Authors:  Angles24
-Version:  1.2.7
+Version:  1.2.8
 Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 Updated: January 2022 by ripsnorttear
 -->
@@ -1028,8 +1028,11 @@ Updated: January 2022 by ripsnorttear
 			<LLTalkTo NpcId="1004472" XYZ="335.4086, 9.635179, 17.13586" QuestId="65781" StepId="3"/>
 		</If>
 		<If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 4">
-		<UserDialog QuestId="65781" StepId="4" DialogText="Please manually complete the dungeon: Lv. 15 Satasha."/>
-		<WaitWhile Condition="not GetQuestStep(65781) == 255"/>
+			<UserDialog QuestId="65781" StepId="4" DialogText="Please manually complete the dungeon: Lv. 15 Satasha."/>
+			<If condition="not DutyManager.InInstance">
+				<LLJoinDuty DutyId="4"/>
+			</If>
+			<WaitWhile Condition="not GetQuestStep(65781) == 255"/>
 		</If>
 		<If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 255">
 			<GetTo ZoneId="128" XYZ="16.20745, 40.19998, -5.131207"/>
@@ -1144,8 +1147,6 @@ Updated: January 2022 by ripsnorttear
 	</Order>
 	<GrindAreas>
 		<GrindArea name="Gladiator_1_0">
-			<minLevel>1</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="314.5982, 64.7995, 156.4156" name="Gladiator_1_0"/>
 			</Hotspots>
@@ -1154,8 +1155,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_1">
-			<minLevel>1</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="351.6014, 74.74335, 160.1844" name="Gladiator_1_1"/>
 			</Hotspots>
@@ -1164,8 +1163,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_2">
-			<minLevel>1</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="313.7525, 64.7995, 158.0555" name="Gladiator_1_2"/>
 			</Hotspots>
@@ -1174,8 +1171,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_3">
-			<minLevel>3</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="27.2504, 0.01336503, 244.2667" name="Gladiator_1_3"/>
 			</Hotspots>
@@ -1184,8 +1179,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_4">
-			<minLevel>5</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="45.20199, 50.77315, 210.5393" name="Gladiator_1_4"/>
 			</Hotspots>
@@ -1194,8 +1187,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_5">
-			<minLevel>5</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="-71.07242, -2.21065, 74.3978" name="Gladiator_1_5"/>
 			</Hotspots>
@@ -1204,8 +1195,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_6">
-			<minLevel>5</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="128.2242, 55.12308, 257.0624" name="Gladiator_1_6"/>
 			</Hotspots>
@@ -1214,8 +1203,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_7">
-			<minLevel>7</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="-201.8878, -30.66331, 101.3387" name="Gladiator_1_7"/>
 			</Hotspots>
@@ -1224,8 +1211,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_8">
-			<minLevel>9</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="-220.3412, 25.02701, -103.2786" name="Gladiator_1_8"/>
 			</Hotspots>
@@ -1234,8 +1219,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_9">
-			<minLevel>10</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="162.3209, -1.385605, -148.5018" name="Gladiator_1_9"/>
 			</Hotspots>
@@ -1244,8 +1227,6 @@ Updated: January 2022 by ripsnorttear
 			</TargetMobs>
 		</GrindArea>
 		<GrindArea name="Gladiator_1_10">
-			<minLevel>10</minLevel>
-			<maxLevel>80</maxLevel>
 			<Hotspots>
 				<Hotspot radius="90" xyz="69.3227, 58.21692, 12.515" name="Gladiator_1_10"/>
 			</Hotspots>
@@ -1260,8 +1241,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="923"/> <!-- Duskwight Freelancer -->
 			</TargetMobs>
-			<MinLevel>10</MinLevel>
-			<MaxLevel>61</MaxLevel>
 		</GrindArea>
 		<GrindArea name="My_First_Gladius2">
 			<Hotspots>
@@ -1270,8 +1249,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="632"/> <!-- Huge Hornet -->
 			</TargetMobs>
-			<MinLevel>1</MinLevel>
-			<MaxLevel>61</MaxLevel>
 		</GrindArea>
 		<GrindArea name="My_First_Gladius3">
 			<Hotspots>
@@ -1280,8 +1257,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="318"/> <!-- Snapping Shrew -->
 			</TargetMobs>
-			<MinLevel>1</MinLevel>
-			<MaxLevel>61</MaxLevel>
 		</GrindArea>
 		<GrindArea name="My_First_Gladius">
 			<Hotspots>
@@ -1290,8 +1265,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="262"/> <!-- Star Marmot -->
 			</TargetMobs>
-			<MinLevel>1</MinLevel>
-			<MaxLevel>61</MaxLevel>
 		</GrindArea>
 		<GrindArea Name="Star_Marmot">
 			<Hotspots>
@@ -1300,8 +1273,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="262"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Huge_Hornet">
 			<Hotspots>
@@ -1310,8 +1281,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="632"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Snapping_Shrew">
 			<Hotspots>
@@ -1320,8 +1289,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="318"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Antling_Worker">
 			<Hotspots>
@@ -1330,8 +1297,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="294"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Sun_Midge_Swarm">
 			<Hotspots>
@@ -1340,8 +1305,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="298"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Baron_Von_Quiveron">
 			<Hotspots>
@@ -1353,8 +1316,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="328"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Arbor_Buzzard">
 			<Hotspots>
@@ -1363,8 +1324,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="13"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Thickshell">
 			<Hotspots>
@@ -1373,8 +1332,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="636"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Scaphite">
 			<Hotspots>
@@ -1383,8 +1340,6 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="635"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 		<GrindArea Name="Ziz">
 			<Hotspots>
@@ -1393,13 +1348,11 @@ Updated: January 2022 by ripsnorttear
 			<TargetMobs>
 				<TargetMob Id="224"/>
 			</TargetMobs>
-			<MinLevel/>
-			<MaxLevel/>
 		</GrindArea>
 	</GrindAreas>
 	<CodeChunks>
 		<CodeChunk Name="Voice_Of_The_Just">
-			<![CDATA[ 
+			<![CDATA[
 				await Coroutine.Sleep(2000);
 				foreach (BagSlot slot in InventoryManager.FilledInventoryAndArmory)
 				{
@@ -1413,7 +1366,7 @@ Updated: January 2022 by ripsnorttear
 			]]>
 		</CodeChunk>
 		<CodeChunk Name="WarLevel5">
-			<![CDATA[ 
+			<![CDATA[
 				BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Head];
 				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
 				{
